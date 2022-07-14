@@ -1,0 +1,45 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+NowSeat-WebApp/dist
+NowSeat-WebApp/tmp
+NowSeat-WebApp/out-tsc
+# Only exists if Bazel was run
+NowSeat-WebApp/bazel-out
+
+# dependencies
+NowSeat-WebApp/node_modules
+
+# profiling files
+NowSeat-WebApp/chrome-profiler-events*.json
+
+# IDEs and editors
+NowSeat-WebApp/.idea
+NowSeat-WebApp/.project
+NowSeat-WebApp/.classpath
+NowSeat-WebApp/.c9/
+NowSeat-WebApp/*.launch
+NowSeat-WebApp/.settings/
+NowSeat-WebApp/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+NowSeat-WebApp/.sass-cache
+NowSeat-WebApp/connect.lock
+NowSeat-WebApp/coverage
+NowSeat-WebApp/libpeerconnection.log
+NowSeat-WebApp/npm-debug.log
+NowSeat-WebApp/yarn-error.log
+NowSeat-WebApp/testem.log
+NowSeat-WebApp//typings
+
+# System Files
+NowSeat-WebApp/.DS_Store
+NowSeat-WebApp/Thumbs.db
