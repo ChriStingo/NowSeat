@@ -1,0 +1,32 @@
+.fixedHeightForm{
+    height: 70px;
+}
+
+.maxHeightSelector{
+    height: 60px;
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.customBorderLeft{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.customBorderRight{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.imageWhite {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+  }

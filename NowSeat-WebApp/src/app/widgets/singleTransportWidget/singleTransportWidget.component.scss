@@ -1,0 +1,17 @@
+p {
+    margin: 0;
+}
+
+img {
+    max-width: 45px;
+    max-height: 45px;
+}
+
+@media screen and (max-width: 768px) {
+    .imgCol, .totalSeatCol {
+        display: none;
+    }
+    .container, .col-1, .col-2, .col-3, .col-4, .col-5 {
+        padding: 0;
+    }
+}

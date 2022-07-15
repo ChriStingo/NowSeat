@@ -1,0 +1,27 @@
+.developers{
+    float: right;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+small {
+    font-size: 10px;
+        line-height: 11px;
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .developers {
+        display: none;
+    }
+
+    .reducePadding {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    small {
+        display: block;
+    }
+}

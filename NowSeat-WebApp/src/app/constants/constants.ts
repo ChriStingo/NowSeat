@@ -1,0 +1,1 @@
+export type VEHICLE = "bus" | "train"
