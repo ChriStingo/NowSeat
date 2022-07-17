@@ -1,10 +1,10 @@
 <div class="container p-0">
     <div class="row maxHeightSelector">
         <div class="col-6 p-0">
-            <button class="w-100 p-0 m-0 h-100 customBorderLeft btn" [ngClass]="{'btn-primary': !selector, 'btn-light border': selector}" (click)="selector = false"><img [ngClass]="{'imageWhite': !selector}" src="../../../assets/bus.png"></button>
+            <button class="w-100 p-0 m-0 h-100 customBorderLeft btn" [ngClass]="{'btn-primary': !selector, 'btn-light border': selector}" (click)="changeSelector(false)"><img [ngClass]="{'imageWhite': !selector}" src="../../../assets/bus.png"></button>
         </div>
         <div class="col-6 p-0">
-            <button class="w-100 p-0 m-0 h-100 btn" [ngClass]="{'btn-primary': selector, 'btn-light border': !selector}" (click)="selector = true"><img [ngClass]="{'imageWhite': selector}" src="../../../assets/train.png"></button>
+            <button class="w-100 p-0 m-0 h-100 btn" [ngClass]="{'btn-primary': selector, 'btn-light border': !selector}" (click)="changeSelector(true)"><img [ngClass]="{'imageWhite': selector}" src="../../../assets/train.png"></button>
         </div>
     </div>
     <div class="row border border-light rounded bg-light justify-content-between pt-3 pb-3 fixedHeightForm">

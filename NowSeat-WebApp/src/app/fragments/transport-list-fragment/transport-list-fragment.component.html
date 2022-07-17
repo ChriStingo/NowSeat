@@ -1,8 +1,14 @@
 <div class="container p-0">
     <div class="row border border-light rounded bg-light justify-content-between pt-3 pb-3">
-        <div class="col-12" *ngFor="let el of elem">
-            <app-singleTransportWidget [singleTransport]="el"></app-singleTransportWidget>
+        <div class="col-12" *ngFor="let el of state.transports">
+            <app-singleTransportWidget 
+            *ngIf="el.typo === vehicleSelector"
+                [singleTransport]="el" 
+                [seats]="state.seats.get(el.idTransport)"
+                (seatsInfoSelectorFunction)="openSeatsInfo($event)">
+            </app-singleTransportWidget>
         </div>
-        <p *ngIf="!elem?.length" class="text-center text-muted">No means of transport provided for the selected stop</p>
+        <!-- TODO: Aggiungere messaggio per no treni o no bus, non no per entrambi-->
+        <p *ngIf="!state.transports" class="text-center text-muted">No means of transport provided for the selected stop</p>
     </div>
 </div>

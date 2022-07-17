@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { VEHICLE } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-selector-widget',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectorWidgetComponent implements OnInit {
     selector: boolean = false
+    @Output() vehicleTypeSelectorFunction = new EventEmitter<VEHICLE>()
 
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  changeSelector(value: boolean){
+    this.selector = value
+    this.vehicleTypeSelectorFunction.emit(this.selector ? "train" : "bus")
   }
 
   search(value: string) {

@@ -6,6 +6,9 @@ import { SelectorWidgetComponent } from './widgets/selector-widget/selector-widg
 import { HomeComponent } from './screens/home/home.component';
 import { TransportListFragmentComponent } from './fragments/transport-list-fragment/transport-list-fragment.component';
 import { SingleTransportWidgetComponent } from './widgets/singleTransportWidget/singleTransportWidget.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './services/http.service';
+import { StateService } from './services/state-manager.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,8 @@ import { SingleTransportWidgetComponent } from './widgets/singleTransportWidget/
     SingleTransportWidgetComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
