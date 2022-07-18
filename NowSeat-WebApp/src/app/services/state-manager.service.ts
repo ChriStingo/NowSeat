@@ -8,11 +8,11 @@ import { MqttProtocolService } from './mqtt-protocol.service';
 })
 export class StateService {
     transports: singleTransport[] = []
-    seats!: Map<number, seat[]>
+    seats: Map<number, seat[]> = new Map<number, seat[]>()
 
   constructor() {
-    this.seats = new Map<number, seat[]>()
-    this.transports = [
+    // MOCK
+    /*this.transports = [
         {
           idTransport: 0,
           typo: VEHICLE.bus,
@@ -101,7 +101,7 @@ export class StateService {
           column: 4,
           state: SEAT_STATE.disabled
         },
-      }])
+      }])*/
   }
 
   public updateTransports(newTransports: singleTransport[]){

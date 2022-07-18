@@ -11,8 +11,9 @@ export class HttpService {
   }
 
   public getVehicles(stopCode: string) {
-    this.http.get<any[]>(BE_URL+`?stopCode=${stopCode}`)
+    this.http.get<any[]>("http://"+BE_URL+`?idTransport=${stopCode}`)
     .subscribe(data => {
+        console.log(data)
         this.state.updateTransports(data)
     },
     error => {

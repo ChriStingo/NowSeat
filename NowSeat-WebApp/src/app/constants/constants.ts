@@ -11,7 +11,7 @@ export enum SEAT_STATE {
     disabled = "Disabled"
 }
 
-export const BE_URL = "localhost:8000"
+export const BE_URL = "localhost:3000"
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     hostname: 'localhost',
