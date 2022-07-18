@@ -8,7 +8,6 @@
                 (seatsInfoSelectorFunction)="openSeatsInfo($event)">
             </app-singleTransportWidget>
         </div>
-        <!-- TODO: Aggiungere messaggio per no treni o no bus, non no per entrambi-->
-        <p *ngIf="!state.transports" class="text-center text-muted">No means of transport provided for the selected stop</p>
+        <p *ngIf="(state.transports | vehicleCounter: vehicleSelector) === 0" class="text-center text-muted m-0">No means of transport provided for the selected stop</p>
     </div>
 </div>

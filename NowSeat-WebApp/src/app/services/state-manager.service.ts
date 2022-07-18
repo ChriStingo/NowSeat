@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { SEAT_STATE, VEHICLE } from '../constants/constants';
 import { seat, singleTransport } from '../types/types';
+import { MqttProtocolService } from './mqtt-protocol.service';
 
 @Injectable({
     providedIn: 'root',
@@ -13,7 +15,7 @@ export class StateService {
     this.transports = [
         {
           idTransport: 0,
-          typo: "bus",
+          typo: VEHICLE.bus,
           stopCode: "0000",
           line: 0,
           time: "00:00",
@@ -25,7 +27,7 @@ export class StateService {
         },
         {
             idTransport: 1,
-            typo: "bus",
+            typo: VEHICLE.bus,
             stopCode: "0000",
             line: 0,
             time: "00:00",
@@ -41,7 +43,7 @@ export class StateService {
         seat: {
           row: 1,
           column: 1,
-          state: "Full"
+          state: SEAT_STATE.full
         }
       },
       {
@@ -49,7 +51,7 @@ export class StateService {
         seat: {
           row: 1,
           column: 2,
-          state: "Empty"
+          state: SEAT_STATE.empty
         }
       },
       {
@@ -57,7 +59,7 @@ export class StateService {
         seat: {
           row: 2,
           column: 1,
-          state: "Full"
+          state: SEAT_STATE.full
         }
       },
       {
@@ -65,7 +67,7 @@ export class StateService {
         seat: {
           row: 2,
           column: 2,
-          state: "Disabled"
+          state: SEAT_STATE.disabled
         },
       },
       {
@@ -73,7 +75,7 @@ export class StateService {
         seat: {
           row: 1,
           column: 3,
-          state: "Full"
+          state: SEAT_STATE.full
         }
       },
       {
@@ -81,7 +83,7 @@ export class StateService {
         seat: {
           row: 1,
           column: 3,
-          state: "Empty"
+          state: SEAT_STATE.empty
         }
       },
       {
@@ -89,7 +91,7 @@ export class StateService {
         seat: {
           row: 2,
           column: 4,
-          state: "Full"
+          state: SEAT_STATE.full
         }
       },
       {
@@ -97,7 +99,7 @@ export class StateService {
         seat: {
           row: 2,
           column: 4,
-          state: "Disabled"
+          state: SEAT_STATE.disabled
         },
       }])
   }
@@ -112,10 +114,19 @@ export class StateService {
 
   public openSeatsInfo(idTransport: number) {
     this.transports.forEach((el) => {
-        if(el.idTransport === idTransport)
+        if(el.idTransport === idTransport){
             el.seatsInfo = !el.seatsInfo
-        else
+        }else
             el.seatsInfo = false
     })
+  }
+
+  public reset(){
+    this.transports = []
+    this.seats.clear()
+  }
+
+  public closeTransport(){
+    this.transports.forEach((el) => el.seatsInfo = false)
   }
 }

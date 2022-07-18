@@ -12,6 +12,7 @@ export class SingleTransportWidgetComponent implements OnInit {
     @Input() seats: seat[] | undefined
     @Output() seatsInfoSelectorFunction = new EventEmitter<number>()
     seatsPrepared!: SEAT_STATE[][]
+    SEAT_STATE_TYPE = SEAT_STATE
 
   constructor() { }
 
@@ -27,12 +28,11 @@ export class SingleTransportWidgetComponent implements OnInit {
         for(let row = 0; row < this.singleTransport.rows; row++){
             this.seatsPrepared.push([])
             for(let col = 0; col < this.singleTransport.columns; col++){
-                this.seatsPrepared[row].push('Disabled')
+                this.seatsPrepared[row].push(SEAT_STATE.disabled)
             }
         }
         this.seats.forEach(({seat}) => this.seatsPrepared[seat.row-1][seat.column-1] = seat.state)
     }
-    console.log(this.seatsPrepared)
   }
 
   seatsInfo(){

@@ -1,5 +1,5 @@
 <div class="container mb-2">
-        <div class="row align-items-center justify-content-between bg-white rounded border" 
+        <div class="row align-items-center justify-content-between bg-white rounded border" role="button" 
         [ngClass]="{'rounded': !singleTransport.seatsInfo, 'rounded-top': singleTransport.seatsInfo}"
         (click)="seatsInfo()">
             <div class="col-2 col-md-1 text-center border-end">
@@ -42,7 +42,7 @@
                     <div class="col corridor" *ngIf="indexCol === row.length/2 && row.length > 3"></div>
                     <div class="col mb-2 align-seats" [ngClass]="{'border-start': indexCol === 0, 'border-end': indexCol === row.length-1, 'border-bottom pb-2': indexRow === seatsPrepared.length-1, 'border-top pt-2': indexRow === 0}">
                         <img src="../../../assets/seat.png" class="maxSizeSeat"
-                        [ngClass]="{'full': elem === 'Full','empty': elem === 'Empty','disabled': elem === 'Disabled'}">
+                        [ngClass]="{'full': elem === SEAT_STATE_TYPE.full,'empty': elem === SEAT_STATE_TYPE.empty,'disabled': elem === SEAT_STATE_TYPE.disabled}">
                     </div>
                 </ng-container>
             </div>

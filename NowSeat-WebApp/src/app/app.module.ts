@@ -7,8 +7,9 @@ import { HomeComponent } from './screens/home/home.component';
 import { TransportListFragmentComponent } from './fragments/transport-list-fragment/transport-list-fragment.component';
 import { SingleTransportWidgetComponent } from './widgets/singleTransportWidget/singleTransportWidget.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpService } from './services/http.service';
-import { StateService } from './services/state-manager.service';
+import { VehicleCounterPipe } from './pipe/vehicleCounter.pipe';
+import {MqttModule} from 'ngx-mqtt';
+import { MQTT_SERVICE_OPTIONS } from './constants/constants';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,13 @@ import { StateService } from './services/state-manager.service';
     HomeComponent,
     SelectorWidgetComponent,
     TransportListFragmentComponent,
-    SingleTransportWidgetComponent
+    SingleTransportWidgetComponent,
+    VehicleCounterPipe
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS)
   ],
   providers: [],
   bootstrap: [AppComponent]

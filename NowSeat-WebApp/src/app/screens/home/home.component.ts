@@ -8,7 +8,7 @@ import { StateService } from 'src/app/services/state-manager.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-    vehicleSelector: VEHICLE = "bus"
+    vehicleSelector: VEHICLE = VEHICLE.bus
 
   constructor(readonly state: StateService) { }
 

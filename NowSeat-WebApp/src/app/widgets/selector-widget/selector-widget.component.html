@@ -9,7 +9,7 @@
     </div>
     <div class="row border border-light rounded bg-light justify-content-between pt-3 pb-3 fixedHeightForm">
         <div class="col-8 col-md-10">
-            <input type="text" class="form-control w-100 h-100" id="stopCode" placeholder="Stop name or Stop code" #stopCode>
+            <input type="text" class="form-control w-100 h-100" [ngClass]="{'is-invalid': noInput}" id="stopCode" placeholder="Stop name or Stop code" #stopCode>
         </div>
         <div class="col-4 col-md-2">
             <button class="w-100 p-0 m-0 btn btn-outline-primary h-100" (click)="search(stopCode.value)">Search</button>

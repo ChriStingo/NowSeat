@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BE_URL } from '../constants/constants';
 import { StateService } from './state-manager.service';
 
@@ -16,11 +16,7 @@ export class HttpService {
         this.state.updateTransports(data)
     },
     error => {
-        alert("Error:\n" + error)
+        alert("Error:\n" + (error as HttpErrorResponse).message)
     });
-  }
-
-  public getVehicleData(idTransport: number) {
-    // TODO
   }
 }
