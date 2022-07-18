@@ -15,6 +15,7 @@ export class MqttProtocolService {
       public subscribeTopic(idTransport: number): void {
         this.isSub = true
         this.subscription = this._mqttService.observe(`${idTransport}`).subscribe((message: IMqttMessage) => {
+            console.log(message.payload.toString())
             this.state.updateSeats(idTransport, JSON.parse(message.payload.toString()))
           })
       }

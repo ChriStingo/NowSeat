@@ -16,8 +16,8 @@ client.on('message', function(topic, message) {
 /////////////////////////////////////////////////////
 // create a new message
 var message = {
-  topic: 'IOT22',
-  payload: "jsonPayload",
+  topic: '0',
+  payload: "payloadSeat",
   qos: 1,
   retain: true
 };
@@ -42,19 +42,19 @@ var payload = {
 }
 
 var payloadSeat = {
-  "idTransport": "1",
-  "seats": {
+  "idTransport": "0",
+  "seat": {
     "row": "1",
     "column": "2",
-    "state": "SEAT_STATE"
+    "state": "Full"
   }
 }
 
 
 function buildMessage() {
   // message.payload = JSON.stringify(jsonPayload);
-  // message.payload = JSON.stringify(payloadSeat);
-  message.payload = JSON.stringify(payload);
+  message.payload = JSON.stringify(payloadSeat);
+  //message.payload = JSON.stringify(payload);
 }
 
 function updatePayload(){
@@ -64,11 +64,11 @@ function updatePayload(){
   payload.time = Date().slice(16, 21);
   payload.type = 'Bus';
 
-  /*
-  payloadSeat.seats.row = parseInt(payloadSeat.seats.row) + 1
-  payloadSeat.seats.column = parseInt(payloadSeat.seats.column) + 2
-  payloadSeat.seats.state = 'Full'
-  */
+  
+  payloadSeat.seat.row = (parseInt(payloadSeat.seat.row) + 1) % 5 + 1
+  payloadSeat.seat.column = (parseInt(payloadSeat.seat.column) + 1) % 5 + 1
+  payloadSeat.seat.state = 'Full'
+  
 }
 
 function messageToClient() {
@@ -76,14 +76,14 @@ function messageToClient() {
   buildMessage();
   console.log('message sent');
   // console.log(jsonPayload);
-  console.log(payload);
+  console.log(payloadSeat);
 	// client.publish('IOT22', JSON.stringify(jsonPayload));
-  client.publish('IOT22', JSON.stringify(payload));
+  client.publish('0', JSON.stringify(payloadSeat));
   
 }
 
 updatePayload();
-client.publish('TEST', JSON.stringify(payload));
+client.publish('TEST', JSON.stringify(payloadSeat));
 
 // the server sends the message 
 setInterval(messageToClient, 3000);

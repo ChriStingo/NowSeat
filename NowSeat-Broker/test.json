@@ -1,0 +1,12 @@
+[{
+    "idTransport": "0",
+    "type": "bus",
+    "stopCode": "0",
+    "line": "123",
+    "time": "12:12",
+    "totalSeats": "50",
+    "start": "Genova",
+    "destination": "Savona",
+    "rows": "10",
+    "columns": "10"
+}]

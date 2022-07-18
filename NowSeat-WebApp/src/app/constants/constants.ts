@@ -15,6 +15,6 @@ export const BE_URL = "localhost:3000"
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     hostname: 'localhost',
-    port: 9001,
+    port: 8883,
     path: ''
 };

@@ -4,16 +4,26 @@ const aedes = require('aedes')()
 const server = require('net').createServer(aedes.handle)
 const port = 1883
 
-server.listen(port, function () {
-  console.log('server listening on port', port)
-})
+const wsPort = 8883
+const httpServer = require('http').createServer()
+const ws = require('websocket-stream')
+ws.createServer({ server: httpServer }, aedes.handle)
 
+server.listen(port, function () {
+    console.log('server listening on port', port)
+  })
+
+httpServer.listen(wsPort, function () {
+    console.log('server listening on port', port)
+  })
+
+  
 aedes.on('clientError', function (client, err) {
-  console.log('client error', client.id, err.message, err.stack)
+  //console.log('client error', client.id, err.message, err.stack)
 })
 
 aedes.on('connectionError', function (client, err) {
-  console.log('client error', client, err.message, err.stack)
+  //console.log('client error', client, err.message, err.stack)
 })
 
 aedes.on('publish', function (packet, client) {

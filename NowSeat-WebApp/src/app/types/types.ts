@@ -2,7 +2,7 @@ import { SEAT_STATE, VEHICLE } from "../constants/constants"
 
 export type singleTransport = {
     idTransport: number,
-    typo: VEHICLE,
+    type: VEHICLE,
     stopCode: string,
     line: number,
     time: string,

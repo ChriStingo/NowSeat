@@ -2,9 +2,10 @@
     <div class="row border border-light rounded bg-light justify-content-between pt-3 pb-3">
         <div class="col-12" *ngFor="let el of state.transports">
             <app-singleTransportWidget 
-            *ngIf="el.typo === vehicleSelector"
+            *ngIf="el.type === vehicleSelector"
                 [singleTransport]="el" 
                 [seats]="state.seats.get(el.idTransport)"
+                [seatsPrepared]="state.seatsPrepared.get(el.idTransport)"
                 (seatsInfoSelectorFunction)="openSeatsInfo($event)">
             </app-singleTransportWidget>
         </div>

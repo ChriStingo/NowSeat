@@ -9,13 +9,14 @@ var settings = {
 var app = http.createServer(function(req,res){
     let parseReq = req.url.split("?");
     parseReq = parseReq[1].split("=");
-    let rawdata = fs.readFileSync('./Es4/test.json'); // da modificare con il proprio path
+    let rawdata = fs.readFileSync('test.json'); // da modificare con il proprio path
     let fileContent = JSON.parse(rawdata);
-    var result;
+    console.log(fileContent)
+    var result = [];
     var val = parseReq[1];
     for (var i = 0; i < fileContent.length; i++){
       if (fileContent[i].idTransport == val){
-        result = {
+        result.push({
           "idTransport" : val,
           "type": fileContent[i].type,
           "stopCode": fileContent[i].stopCode,
@@ -26,10 +27,13 @@ var app = http.createServer(function(req,res){
           "destination": fileContent[i].destination,
           "rows": fileContent[i].rows,
           "columns": fileContent[i].columns
-        };
+        });
       } 
     }
+    console.log(result)
     res.setHeader('Content-Type', 'application/json');
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.end(JSON.stringify(result, null, 3));
 });
 

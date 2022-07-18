@@ -9,7 +9,7 @@ export class VehicleCounterPipe implements PipeTransform {
 
   transform(value: singleTransport[], vehicle?: VEHICLE): number {
     let result = 0
-    value.forEach(({typo}) => {if(typo === vehicle) result++});
+    value.forEach(({type}) => {if(type === vehicle) result++});
     return result
   }
 

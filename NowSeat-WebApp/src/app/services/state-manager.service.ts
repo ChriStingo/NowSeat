@@ -9,13 +9,14 @@ import { MqttProtocolService } from './mqtt-protocol.service';
 export class StateService {
     transports: singleTransport[] = []
     seats: Map<number, seat[]> = new Map<number, seat[]>()
+    seatsPrepared: Map<number, SEAT_STATE[][]> = new Map<number, SEAT_STATE[][]>()
 
   constructor() {
     // MOCK
     /*this.transports = [
         {
           idTransport: 0,
-          typo: VEHICLE.bus,
+          type: VEHICLE.bus,
           stopCode: "0000",
           line: 0,
           time: "00:00",
@@ -27,7 +28,7 @@ export class StateService {
         },
         {
             idTransport: 1,
-            typo: VEHICLE.bus,
+            type: VEHICLE.bus,
             stopCode: "0000",
             line: 0,
             time: "00:00",
@@ -108,8 +109,33 @@ export class StateService {
     this.transports = newTransports
   }
 
-  public updateSeats(idTransport: number, seats: seat[]){
-    this.seats.set(idTransport, seats)
+  public updateSeats(idTransport: number, seat: seat){
+    let obj = this.seats.get(idTransport)
+    if(!obj)
+        obj = [seat]
+    else
+        obj.push(seat)
+    this.seats.set(idTransport, obj)
+    this.prepareSeats(idTransport)
+  }
+
+  private prepareSeats(id: number){
+    const transport = this.transports.find(({idTransport}) => idTransport === id)
+    if(!this.seatsPrepared.get(id) && transport){
+        let seatsPrepared: SEAT_STATE[][] = []
+        for(let row = 0; row < transport.rows; row++){
+            seatsPrepared.push([])
+            for(let col = 0; col < transport.columns; col++){
+                seatsPrepared[row].push(SEAT_STATE.disabled)
+            }
+        }
+        this.seatsPrepared.set(id, seatsPrepared)
+    }
+    const seatMatrix = this.seatsPrepared.get(id)
+    if(seatMatrix){
+        this.seats.get(id)?.forEach(({seat}) => seatMatrix[seat.row-1][seat.column-1] = seat.state)
+        this.seatsPrepared.set(id, seatMatrix)
+    }
   }
 
   public openSeatsInfo(idTransport: number) {
