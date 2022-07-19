@@ -15,9 +15,9 @@ var app = http.createServer(function(req,res){
     var result = [];
     var val = parseReq[1];
     for (var i = 0; i < fileContent.length; i++){
-      if (fileContent[i].idTransport == val){
+      if (fileContent[i].stopCode == val){
         result.push({
-          "idTransport" : val,
+          "idTransport" : fileContent[i].idTransport,
           "type": fileContent[i].type,
           "stopCode": fileContent[i].stopCode,
           "line": fileContent[i].line,

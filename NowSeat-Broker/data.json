@@ -1,0 +1,48 @@
+[{
+    "idTransport": "0",
+    "type": "bus",
+    "stopCode": "Cantore",
+    "line": "1",
+    "time": "12:00",
+    "totalSeats": "80",
+    "start": "Voltri",
+    "destination": "Caricamento",
+    "rows": "20",
+    "columns": "4"
+},
+{
+    "idTransport": "1",
+    "type": "bus",
+    "stopCode": "Cantore",
+    "line": "18",
+    "time": "12:05",
+    "totalSeats": "40",
+    "start": "Fiumara",
+    "destination": "San Martino",
+    "rows": "10",
+    "columns": "4"
+},
+{
+    "idTransport": "2",
+    "type": "bus",
+    "stopCode": "Cantore",
+    "line": "66",
+    "time": "12:15",
+    "totalSeats": "16",
+    "start": "Piazza Montano",
+    "destination": "Dinegro",
+    "rows": "4",
+    "columns": "4"
+},
+{
+    "idTransport": "3",
+    "type": "train",
+    "stopCode": "Cantore",
+    "line": "66",
+    "time": "12:15",
+    "totalSeats": "16",
+    "start": "Piazza Montano",
+    "destination": "Dinegro",
+    "rows": "4",
+    "columns": "4"
+}]

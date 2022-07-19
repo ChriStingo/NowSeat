@@ -32,6 +32,7 @@ export class SelectorWidgetComponent implements OnInit {
     if(value.length > 0){
         this.noInput = false
         this.state.reset()
+        this.mqttService.unsubscribe()
         this.http.getVehicles(value)
     } else {
         this.noInput = true

@@ -29,7 +29,7 @@ var jsonPayload = {
 };
 
 var payload = {
-  "idTransport": "1",
+  "idTransport": "0",
   "type": "VEHICLE",
   "stopCode": "testStop",
   "line": "356",
@@ -65,9 +65,10 @@ function updatePayload(){
   payload.type = 'Bus';
 
   
-  payloadSeat.seat.row = (parseInt(payloadSeat.seat.row) + 1) % 5 + 1
-  payloadSeat.seat.column = (parseInt(payloadSeat.seat.column) + 1) % 5 + 1
-  payloadSeat.seat.state = 'Full'
+  payloadSeat.seat.row = parseInt(Math.floor(Math.random() * 4) + 1);
+  payloadSeat.seat.column = parseInt(Math.floor(Math.random() * 4) + 1);
+  let x = ['Full', 'Empty']
+  payloadSeat.seat.state = x[parseInt(Math.floor(Math.random() * 2))]
   
 }
 
