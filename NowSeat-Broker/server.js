@@ -62,7 +62,7 @@ let httpServer = http.createServer(function(req,res){
     const fileContent = JSON.parse(fs.readFileSync('data.json'));
     var result = [];
     for (var i = 0; i < fileContent.length; i++){
-        if (fileContent[i].stopCode == stopCodeRequest){
+        if (fileContent[i].stopCode.toString().toUpperCase() == stopCodeRequest.toString().toUpperCase()){
             result.push({
                 "idTransport" : fileContent[i].idTransport,
                 "type": fileContent[i].type,

@@ -42,9 +42,13 @@
                     <div class="col corridor" *ngIf="indexCol === row.length/2 && row.length > 3"></div>
                     <div class="col mb-2 align-seats" [ngClass]="{'border-start': indexCol === 0, 'border-end': indexCol === row.length-1, 'border-bottom pb-2': indexRow === seatsPrepared.length-1, 'border-top pt-2': indexRow === 0}">
                         <img src="../../../assets/seat.png" class="maxSizeSeat"
+                        title="{{'This seat is: ' + elem}}"
                         [ngClass]="{'full': elem === SEAT_STATE_TYPE.full,'empty': elem === SEAT_STATE_TYPE.empty,'disabled': elem === SEAT_STATE_TYPE.disabled}">
                     </div>
                 </ng-container>
+            </div>
+            <div clas="row">
+                <div class="col-12 h6" align="right"><span class="text-success">Full</span>, <span class="text-danger">Empty</span>, <span class="text-muted">No data</span></div>
             </div>
         </div>
         <div class="col-12" align="center" *ngIf="!seats || !seatsPrepared">
