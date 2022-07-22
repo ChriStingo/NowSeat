@@ -38,11 +38,11 @@
     "idTransport": "3",
     "type": "train",
     "stopCode": "Cantore",
-    "line": "66",
+    "line": "365",
     "time": "12:15",
     "totalSeats": "16",
-    "start": "Piazza Montano",
-    "destination": "Dinegro",
+    "start": "Ventimiglia",
+    "destination": "Genova Brignole",
     "rows": "4",
     "columns": "4"
 }]
