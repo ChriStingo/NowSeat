@@ -3,21 +3,21 @@
         [ngClass]="{'rounded': !singleTransport.seatsInfo, 'rounded-top': singleTransport.seatsInfo}"
         (click)="seatsInfo()">
             <div class="col-2 col-md-1 text-center border-end">
-                <p>Line<span class="d-block h4 m-0">{{singleTransport?.line}}</span></p>
+                <p>Line<span class="d-block h4 m-0">{{singleTransport.line}}</span></p>
             </div>
             <div class="col-4 col-md-2 text-center pe-0">
-                <p>Expected at<span class="d-block h6 m-0">{{singleTransport?.time}}</span></p>
+                <p>Expected at<span class="d-block h6 m-0">{{singleTransport.time}}</span></p>
             </div>
             <div class="col-2 text-center pe-0 imgCol">
-                <img src="../../../assets/{{singleTransport?.type}}.png">
+                <img src="../../../assets/{{singleTransport.type}}.png">
             </div>
             <div class="col-2 text-center pe-0 totalSeatCol">
-                <p>Total seats<span class="d-block h6 m-0">{{singleTransport?.totalSeats}}</span></p>
+                <p>Total seats<span class="d-block h6 m-0">{{singleTransport.totalSeats}}</span></p>
             </div>
             <div class="col-6 col-md-5">
                 <div class="row text-center p-0">
                     <div class="col-12 text-truncate">
-                        {{singleTransport?.start}}
+                        {{singleTransport.start}}
                     </div>
                 </div>
                 <div class="row text-center p-0">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="row text-center p-0">
                     <div class="col-12 text-truncate">
-                        {{singleTransport?.destination}}
+                        {{singleTransport.destination}}
                     </div>
                 </div>
             </div>
