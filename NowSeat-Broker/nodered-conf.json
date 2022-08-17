@@ -1,0 +1,327 @@
+[
+    {
+        "id": "2eb5143f6cecffd5",
+        "type": "tab",
+        "label": "IoT-Final-Project",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "979788bd7e99d7d9",
+        "type": "inject",
+        "z": "2eb5143f6cecffd5",
+        "name": "Sensor's Data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "185530a26988d613"
+            ]
+        ]
+    },
+    {
+        "id": "42fd178fb82d4b9b",
+        "type": "debug",
+        "z": "2eb5143f6cecffd5",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "436be2e6b9031707",
+        "type": "template",
+        "z": "2eb5143f6cecffd5",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "idTransport is: {{{flow.idTransport}}} row is: {{{flow.row}}} column is: {{{flow.column}}} state is: {{{flow.state}}}",
+        "output": "str",
+        "x": 820,
+        "y": 100,
+        "wires": [
+            [
+                "42fd178fb82d4b9b",
+                "faf39f36f59ee320"
+            ]
+        ]
+    },
+    {
+        "id": "185530a26988d613",
+        "type": "switch",
+        "z": "2eb5143f6cecffd5",
+        "name": "",
+        "property": "idTransport",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "undefined",
+                "vt": "undefined"
+            },
+            {
+                "t": "istype",
+                "v": "number",
+                "vt": "number"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "9a046755bff738d7"
+            ],
+            [
+                "973af979545719d0"
+            ]
+        ]
+    },
+    {
+        "id": "9a046755bff738d7",
+        "type": "change",
+        "z": "2eb5143f6cecffd5",
+        "name": "init payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "idTransport",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "row",
+                "pt": "flow",
+                "to": "1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "column",
+                "pt": "flow",
+                "to": "1",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "flow",
+                "to": "Full",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 60,
+        "wires": [
+            [
+                "436be2e6b9031707"
+            ]
+        ]
+    },
+    {
+        "id": "5ccacd4b29099a11",
+        "type": "inject",
+        "z": "2eb5143f6cecffd5",
+        "name": "reset",
+        "props": [
+            {
+                "p": "input",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 90,
+        "y": 360,
+        "wires": [
+            [
+                "6cb1fd45c24a0370"
+            ]
+        ]
+    },
+    {
+        "id": "6cb1fd45c24a0370",
+        "type": "change",
+        "z": "2eb5143f6cecffd5",
+        "name": "del flow.value",
+        "rules": [
+            {
+                "t": "set",
+                "p": "value",
+                "pt": "flow",
+                "to": "undefined",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9dbba1508a33b374",
+        "type": "function",
+        "z": "2eb5143f6cecffd5",
+        "name": "inc row seat",
+        "func": "flow.set('row',(flow.get('row')+1)%4)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 140,
+        "wires": [
+            [
+                "436be2e6b9031707"
+            ]
+        ]
+    },
+    {
+        "id": "faf39f36f59ee320",
+        "type": "mqtt out",
+        "z": "2eb5143f6cecffd5",
+        "name": "",
+        "topic": "TEST",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "960c3092a0e48a16",
+        "x": 1070,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "973af979545719d0",
+        "type": "switch",
+        "z": "2eb5143f6cecffd5",
+        "name": "",
+        "property": "row",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "9dbba1508a33b374"
+            ],
+            [
+                "b40cce187d3ed716"
+            ]
+        ]
+    },
+    {
+        "id": "b40cce187d3ed716",
+        "type": "function",
+        "z": "2eb5143f6cecffd5",
+        "name": "inc column seat",
+        "func": "flow.set('column',(flow.get('column')+1)%4)\nflow.set('row', (flow.get('row') + 1) % 4) \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 200,
+        "wires": [
+            [
+                "436be2e6b9031707"
+            ]
+        ]
+    },
+    {
+        "id": "960c3092a0e48a16",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "https://localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
