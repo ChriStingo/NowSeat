@@ -19,4 +19,15 @@ export class HttpService {
         alert("Error:\n" + (error as HttpErrorResponse).message)
     });
   }
+
+  public getVehicleInitialState(idTransport: number) {
+    this.http.get<any[]>("http://"+BE_URL+`/?idTransport=${idTransport}`)
+    .subscribe(data => {
+        console.log(data)
+        data.forEach((singleSeat) => this.state.updateSeats(idTransport, singleSeat))
+    },
+    error => {
+        alert("Error:\n" + (error as HttpErrorResponse).message)
+    });
+  }
 }

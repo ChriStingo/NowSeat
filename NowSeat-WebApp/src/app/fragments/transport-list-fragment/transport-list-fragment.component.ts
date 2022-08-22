@@ -13,7 +13,7 @@ import { seat, singleTransport } from 'src/app/types/types';
 export class TransportListFragmentComponent implements OnInit {  
     @Input() vehicleSelector: VEHICLE = VEHICLE.bus
 
-  constructor(readonly state: StateService, readonly mqttService: MqttProtocolService) { }
+  constructor(readonly state: StateService, readonly http: HttpService, readonly mqttService: MqttProtocolService) { }
 
   ngOnInit() {
   }
@@ -21,8 +21,10 @@ export class TransportListFragmentComponent implements OnInit {
   openSeatsInfo(id: number) {
     this.state.openSeatsInfo(id)
     this.mqttService.unsubscribe()
-    if(this.state.transports.find(({idTransport}) => idTransport === id)?.seatsInfo)
-        this.mqttService.subscribeTopic(id)       
+    if(this.state.transports.find(({idTransport}) => idTransport === id)?.seatsInfo){
+        this.http.getVehicleInitialState(id)
+        this.mqttService.subscribeTopic(id)
+    }       
   }
 
   ngOnDestroy(){
