@@ -32,6 +32,28 @@ img {
     filter: invert(82%) sepia(12%) saturate(3%) hue-rotate(13deg) brightness(80%) contrast(83%)
 }
 
+.animation-full {
+    animation-name: glow-full;
+    animation-duration: 0.7s;
+}
+
+.animation-empty {
+    animation-name: glow-empty;
+    animation-duration: 0.7s;
+}
+
+@keyframes glow-empty {
+    0%   {filter: invert(29%) sepia(50%) saturate(2586%) hue-rotate(339deg) brightness(72%) contrast(84%)}
+    50%  {filter: invert(33%) sepia(70%) saturate(1508%) hue-rotate(180deg) brightness(90%) contrast(86%)}
+    100%  {filter: invert(45%) sepia(95%) saturate(348%) hue-rotate(84deg) brightness(101%) contrast(88%)}
+  }
+
+@keyframes glow-full {
+    0%   {filter: invert(45%) sepia(95%) saturate(348%) hue-rotate(84deg) brightness(101%) contrast(88%)}
+    50%  {filter: invert(33%) sepia(70%) saturate(1508%) hue-rotate(180deg) brightness(90%) contrast(86%)}
+    100%  {filter: invert(29%) sepia(50%) saturate(2586%) hue-rotate(339deg) brightness(72%) contrast(84%)}
+  }
+
 @media screen and (max-width: 768px) {
     .imgCol, .totalSeatCol {
         display: none;
