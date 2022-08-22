@@ -23,7 +23,6 @@ export class HttpService {
   public getVehicleInitialState(idTransport: number) {
     this.http.get<any[]>("http://"+BE_URL+`/?idTransport=${idTransport}`)
     .subscribe(data => {
-        console.log(data)
         data.forEach((singleSeat) => this.state.updateSeats(idTransport, singleSeat))
     },
     error => {
