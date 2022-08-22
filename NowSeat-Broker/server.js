@@ -11,6 +11,11 @@ const mqttPort = 1883
 const wsPort = 8883
 
 /** #########################################
+ *                  Data
+ * #########################################*/
+var actualState = new Map() // Topic -> [...{ idTransport: 'x', seat: { row: y, column: z, state: '...' } }]
+
+/** #########################################
  *         BROKER (mqtt and websocket)
  * #########################################*/
 const aedes = require('aedes')()
@@ -40,6 +45,25 @@ aedes.on('connectionError', function (client, err) {
 aedes.on('publish', function (packet, client) {
 if (client) {
     console.log('message from client', client.id)
+
+    // Add state to HashMap
+    const actualStateArray = actualState.get(packet.topic.toString()) || []
+    let changed = false
+
+    // Try to update an already known state
+    const parsedPacket = JSON.parse(packet.payload.toString())
+    actualStateArray.forEach((singleTransport) => {
+        if(singleTransport.seat.row === parsedPacket.seat.row && singleTransport.seat.column === parsedPacket.seat.column){
+            singleTransport.seat.state = parsedPacket.seat.state
+            changed = true
+        }
+    })
+
+    // If it's a new state
+    if(!changed){
+        actualStateArray.push(JSON.parse(packet.payload.toString()))
+        actualState.set(packet.topic.toString(), actualStateArray)
+    }
 }
 })
 
@@ -58,25 +82,36 @@ aedes.on('client', function (client) {
  *          HTTP SERVER (API REST)
  * #########################################*/
 let httpServer = http.createServer(function(req,res){
-    const stopCodeRequest = req.url.split("=")[1];
-    const fileContent = JSON.parse(fs.readFileSync('data.json'));
+    const requestType = req.url.split("?")[1].split("=")[0];
+    const requestCode = req.url.split("?")[1].split("=")[1];
     var result = [];
-    for (var i = 0; i < fileContent.length; i++){
-        if (fileContent[i].stopCode.toString().toUpperCase() == stopCodeRequest.toString().toUpperCase()){
-            result.push({
-                "idTransport" : fileContent[i].idTransport,
-                "type": fileContent[i].type,
-                "stopCode": fileContent[i].stopCode,
-                "line": fileContent[i].line,
-                "time": fileContent[i].time,
-                "totalSeats": fileContent[i].totalSeats,
-                "start": fileContent[i].start,
-                "destination": fileContent[i].destination,
-                "rows": fileContent[i].rows,
-                "columns": fileContent[i].columns
-            });
-        } 
+
+    // Different APIs
+    if(requestType === "stopCode") {
+        // Retrieve information from the Database (data.json file) about the transports at a given stopCode
+        const fileContent = JSON.parse(fs.readFileSync('data.json'));
+        for (var i = 0; i < fileContent.length; i++){
+            if (fileContent[i].stopCode.toString().toUpperCase() == requestCode.toString().toUpperCase()){
+                result.push({
+                    "idTransport" : fileContent[i].idTransport,
+                    "type": fileContent[i].type,
+                    "stopCode": fileContent[i].stopCode,
+                    "line": fileContent[i].line,
+                    "time": fileContent[i].time,
+                    "totalSeats": fileContent[i].totalSeats,
+                    "start": fileContent[i].start,
+                    "destination": fileContent[i].destination,
+                    "rows": fileContent[i].rows,
+                    "columns": fileContent[i].columns
+                });
+            } 
+        }
+    } else { // requestType === "idTransport"
+        // Retrieve the actual state of a single transport
+        result = actualState.get(requestCode.toString()) || []
     }
+    
+    // Send response
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.end(JSON.stringify(result));
