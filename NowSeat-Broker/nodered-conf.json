@@ -1,6 +1,6 @@
 [
     {
-        "id": "2eb5143f6cecffd5",
+        "id": "5b3a1541dfd208be",
         "type": "tab",
         "label": "IoT-Final-Project",
         "disabled": false,
@@ -8,9 +8,9 @@
         "env": []
     },
     {
-        "id": "979788bd7e99d7d9",
+        "id": "764fe0def625a30a",
         "type": "inject",
-        "z": "2eb5143f6cecffd5",
+        "z": "5b3a1541dfd208be",
         "name": "Sensor's Data",
         "props": [
             {
@@ -28,117 +28,49 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 120,
-        "y": 100,
+        "x": 80,
+        "y": 540,
         "wires": [
             [
-                "185530a26988d613"
+                "90def5c4e4e7266c",
+                "0c029529c760da7a",
+                "2b7b7efb02484cc3",
+                "466b55ce9fad409a",
+                "b6b6cd1c5f6df1ce"
             ]
         ]
     },
     {
-        "id": "42fd178fb82d4b9b",
-        "type": "debug",
-        "z": "2eb5143f6cecffd5",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1330,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "436be2e6b9031707",
+        "id": "79a63690836d6a46",
         "type": "template",
-        "z": "2eb5143f6cecffd5",
+        "z": "5b3a1541dfd208be",
         "name": "",
         "field": "payload",
         "fieldType": "msg",
-        "format": "handlebars",
+        "format": "json",
         "syntax": "mustache",
-        "template": "idTransport is: {{{flow.idTransport}}} row is: {{{flow.row}}} column is: {{{flow.column}}} state is: {{{flow.state}}}",
+        "template": "{\n    \"idTransport\": \"{{{flow.idTransport1}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
         "output": "str",
-        "x": 1060,
-        "y": 60,
+        "x": 1340,
+        "y": 220,
         "wires": [
             [
-                "42fd178fb82d4b9b",
-                "faf39f36f59ee320"
+                "bfabb9f7b4b79494"
             ]
         ]
     },
     {
-        "id": "185530a26988d613",
-        "type": "switch",
-        "z": "2eb5143f6cecffd5",
-        "name": "",
-        "property": "idTransport",
-        "propertyType": "flow",
-        "rules": [
-            {
-                "t": "istype",
-                "v": "undefined",
-                "vt": "undefined"
-            },
-            {
-                "t": "istype",
-                "v": "number",
-                "vt": "number"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 270,
-        "y": 100,
-        "wires": [
-            [
-                "9a046755bff738d7"
-            ],
-            [
-                "9dbba1508a33b374"
-            ]
-        ]
-    },
-    {
-        "id": "9a046755bff738d7",
+        "id": "90def5c4e4e7266c",
         "type": "change",
-        "z": "2eb5143f6cecffd5",
+        "z": "5b3a1541dfd208be",
         "name": "init payload",
         "rules": [
             {
                 "t": "set",
-                "p": "idTransport",
+                "p": "idTransport1",
                 "pt": "flow",
                 "to": "0",
                 "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "row",
-                "pt": "flow",
-                "to": "1",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "column",
-                "pt": "flow",
-                "to": "1",
-                "tot": "num"
-            },
-            {
-                "t": "set",
-                "p": "state",
-                "pt": "flow",
-                "to": "Full",
-                "tot": "str"
             }
         ],
         "action": "",
@@ -146,18 +78,18 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 470,
-        "y": 60,
+        "x": 370,
+        "y": 220,
         "wires": [
             [
-                "436be2e6b9031707"
+                "c5b2e257cbd9b856"
             ]
         ]
     },
     {
-        "id": "5ccacd4b29099a11",
+        "id": "4d931c74165f5eaf",
         "type": "inject",
-        "z": "2eb5143f6cecffd5",
+        "z": "5b3a1541dfd208be",
         "name": "reset",
         "props": [
             {
@@ -175,18 +107,18 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 90,
-        "y": 360,
+        "x": 110,
+        "y": 1020,
         "wires": [
             [
-                "6cb1fd45c24a0370"
+                "43bdbff1fb2084f8"
             ]
         ]
     },
     {
-        "id": "6cb1fd45c24a0370",
+        "id": "43bdbff1fb2084f8",
         "type": "change",
-        "z": "2eb5143f6cecffd5",
+        "z": "5b3a1541dfd208be",
         "name": "del flow.value",
         "rules": [
             {
@@ -202,35 +134,35 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 300,
-        "y": 360,
+        "x": 320,
+        "y": 1020,
         "wires": [
             []
         ]
     },
     {
-        "id": "9dbba1508a33b374",
+        "id": "d94cfd8c57cac4d1",
         "type": "function",
-        "z": "2eb5143f6cecffd5",
+        "z": "5b3a1541dfd208be",
         "name": "inc row seat",
-        "func": "flow.set('row',(flow.get('row')+1)%4)\nreturn msg;",
+        "func": "flow.set('row', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 120,
+        "x": 750,
+        "y": 220,
         "wires": [
             [
-                "973af979545719d0"
+                "0daab89344e11424"
             ]
         ]
     },
     {
-        "id": "faf39f36f59ee320",
+        "id": "bfabb9f7b4b79494",
         "type": "mqtt out",
-        "z": "2eb5143f6cecffd5",
+        "z": "5b3a1541dfd208be",
         "name": "",
         "topic": "TEST",
         "qos": "",
@@ -241,59 +173,582 @@
         "correl": "",
         "expiry": "",
         "broker": "960c3092a0e48a16",
-        "x": 1310,
-        "y": 160,
+        "x": 1770,
+        "y": 540,
         "wires": []
     },
     {
-        "id": "b40cce187d3ed716",
+        "id": "0daab89344e11424",
         "type": "function",
-        "z": "2eb5143f6cecffd5",
+        "z": "5b3a1541dfd208be",
         "name": "inc column seat",
-        "func": "flow.set('column',(flow.get('column')+1)%10)\nreturn msg;",
+        "func": "flow.set('column', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 840,
-        "y": 200,
+        "x": 940,
+        "y": 220,
         "wires": [
             [
-                "436be2e6b9031707"
+                "6ca0e3fc364fc5b6"
             ]
         ]
     },
     {
-        "id": "973af979545719d0",
-        "type": "switch",
-        "z": "2eb5143f6cecffd5",
+        "id": "3b7af01b6ccf98ad",
+        "type": "template",
+        "z": "5b3a1541dfd208be",
         "name": "",
-        "property": "row",
-        "propertyType": "flow",
-        "rules": [
-            {
-                "t": "neq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 650,
-        "y": 160,
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"idTransport\": \"{{{flow.idTransport2}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
+        "output": "str",
+        "x": 1340,
+        "y": 380,
         "wires": [
             [
-                "436be2e6b9031707"
-            ],
+                "bfabb9f7b4b79494"
+            ]
+        ]
+    },
+    {
+        "id": "0c029529c760da7a",
+        "type": "change",
+        "z": "5b3a1541dfd208be",
+        "name": "init payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "idTransport2",
+                "pt": "flow",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 380,
+        "wires": [
             [
-                "b40cce187d3ed716"
+                "727e2d75de2d560e"
+            ]
+        ]
+    },
+    {
+        "id": "aa8e59426f6c43f9",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc row seat",
+        "func": "flow.set('row', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "4c0b0bf6e10aee1b"
+            ]
+        ]
+    },
+    {
+        "id": "4c0b0bf6e10aee1b",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc column seat",
+        "func": "flow.set('column', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 380,
+        "wires": [
+            [
+                "bff19e55f655c287"
+            ]
+        ]
+    },
+    {
+        "id": "3c19f35f4ca7a1f4",
+        "type": "template",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"idTransport\": \"{{{flow.idTransport3}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
+        "output": "str",
+        "x": 1340,
+        "y": 540,
+        "wires": [
+            [
+                "bfabb9f7b4b79494"
+            ]
+        ]
+    },
+    {
+        "id": "2b7b7efb02484cc3",
+        "type": "change",
+        "z": "5b3a1541dfd208be",
+        "name": "init payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "idTransport3",
+                "pt": "flow",
+                "to": "2",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 540,
+        "wires": [
+            [
+                "68494b117b7b4c5e"
+            ]
+        ]
+    },
+    {
+        "id": "ff0bdd37feb6cd55",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc row seat",
+        "func": "flow.set('row', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 540,
+        "wires": [
+            [
+                "1523f6a4c62bb439"
+            ]
+        ]
+    },
+    {
+        "id": "1523f6a4c62bb439",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc column seat",
+        "func": "flow.set('column', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 540,
+        "wires": [
+            [
+                "b34ed2e66857ba32"
+            ]
+        ]
+    },
+    {
+        "id": "17cc859832acda1f",
+        "type": "template",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"idTransport\": \"{{{flow.idTransport4}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
+        "output": "str",
+        "x": 1340,
+        "y": 680,
+        "wires": [
+            [
+                "bfabb9f7b4b79494"
+            ]
+        ]
+    },
+    {
+        "id": "466b55ce9fad409a",
+        "type": "change",
+        "z": "5b3a1541dfd208be",
+        "name": "init payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "idTransport4",
+                "pt": "flow",
+                "to": "3",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 680,
+        "wires": [
+            [
+                "1bd61fc1bcf22566"
+            ]
+        ]
+    },
+    {
+        "id": "5a866c0852d580f0",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc row seat",
+        "func": "flow.set('row', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 680,
+        "wires": [
+            [
+                "fb486d186bac165b"
+            ]
+        ]
+    },
+    {
+        "id": "fb486d186bac165b",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc column seat",
+        "func": "flow.set('column', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 680,
+        "wires": [
+            [
+                "da059b76c29d3bb9"
+            ]
+        ]
+    },
+    {
+        "id": "147baacaf1d29953",
+        "type": "template",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"idTransport\": \"{{{flow.idTransport5}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
+        "output": "str",
+        "x": 1340,
+        "y": 820,
+        "wires": [
+            [
+                "bfabb9f7b4b79494"
+            ]
+        ]
+    },
+    {
+        "id": "b6b6cd1c5f6df1ce",
+        "type": "change",
+        "z": "5b3a1541dfd208be",
+        "name": "init payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "idTransport5",
+                "pt": "flow",
+                "to": "4",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 820,
+        "wires": [
+            [
+                "3959712c276c6425"
+            ]
+        ]
+    },
+    {
+        "id": "a2fda1f2164ac944",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc row seat",
+        "func": "flow.set('row', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 820,
+        "wires": [
+            [
+                "3ecde0f32e18caab"
+            ]
+        ]
+    },
+    {
+        "id": "3ecde0f32e18caab",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc column seat",
+        "func": "flow.set('column', parseInt(Math.floor(Math.random() * 4) + 1))\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 820,
+        "wires": [
+            [
+                "72705a9a5f51498a"
+            ]
+        ]
+    },
+    {
+        "id": "c5b2e257cbd9b856",
+        "type": "delay",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "pauseType": "random",
+        "timeout": "0.1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 220,
+        "wires": [
+            [
+                "d94cfd8c57cac4d1"
+            ]
+        ]
+    },
+    {
+        "id": "727e2d75de2d560e",
+        "type": "delay",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "pauseType": "random",
+        "timeout": "0.1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 380,
+        "wires": [
+            [
+                "aa8e59426f6c43f9"
+            ]
+        ]
+    },
+    {
+        "id": "68494b117b7b4c5e",
+        "type": "delay",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "pauseType": "random",
+        "timeout": "0.3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 540,
+        "wires": [
+            [
+                "ff0bdd37feb6cd55"
+            ]
+        ]
+    },
+    {
+        "id": "1bd61fc1bcf22566",
+        "type": "delay",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "pauseType": "random",
+        "timeout": "0.5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 680,
+        "wires": [
+            [
+                "5a866c0852d580f0"
+            ]
+        ]
+    },
+    {
+        "id": "72705a9a5f51498a",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc state seat",
+        "func": "let x = ['Full', 'Empty']\nflow.set('state', x[parseInt(Math.floor(Math.random() * 2))])\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 820,
+        "wires": [
+            [
+                "147baacaf1d29953"
+            ]
+        ]
+    },
+    {
+        "id": "6ca0e3fc364fc5b6",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc state seat",
+        "func": "let x = ['Full', 'Empty']\nflow.set('state', x[parseInt(Math.floor(Math.random() * 2))])\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 220,
+        "wires": [
+            [
+                "79a63690836d6a46"
+            ]
+        ]
+    },
+    {
+        "id": "bff19e55f655c287",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc state seat",
+        "func": "let x = ['Full', 'Empty']\nflow.set('state', x[parseInt(Math.floor(Math.random() * 2))])\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 380,
+        "wires": [
+            [
+                "3b7af01b6ccf98ad"
+            ]
+        ]
+    },
+    {
+        "id": "b34ed2e66857ba32",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc state seat",
+        "func": "let x = ['Full', 'Empty']\nflow.set('state', x[parseInt(Math.floor(Math.random() * 2))])\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 540,
+        "wires": [
+            [
+                "3c19f35f4ca7a1f4"
+            ]
+        ]
+    },
+    {
+        "id": "da059b76c29d3bb9",
+        "type": "function",
+        "z": "5b3a1541dfd208be",
+        "name": "inc state seat",
+        "func": "let x = ['Full', 'Empty']\nflow.set('state', x[parseInt(Math.floor(Math.random() * 2))])\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 680,
+        "wires": [
+            [
+                "17cc859832acda1f"
+            ]
+        ]
+    },
+    {
+        "id": "3959712c276c6425",
+        "type": "delay",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "pauseType": "random",
+        "timeout": "0.5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 820,
+        "wires": [
+            [
+                "a2fda1f2164ac944"
             ]
         ]
     },
