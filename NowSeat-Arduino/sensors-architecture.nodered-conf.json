@@ -50,12 +50,13 @@
         "format": "json",
         "syntax": "mustache",
         "template": "{\n    \"idTransport\": \"{{{flow.idTransport1}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
-        "output": "str",
+        "output": "json",
         "x": 1520,
         "y": 220,
         "wires": [
             [
-                "bfabb9f7b4b79494"
+                "bfabb9f7b4b79494",
+                "5e5c30e3707cadcf"
             ]
         ]
     },
@@ -195,12 +196,13 @@
         "format": "json",
         "syntax": "mustache",
         "template": "{\n    \"idTransport\": \"{{{flow.idTransport2}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
-        "output": "str",
+        "output": "json",
         "x": 1520,
         "y": 380,
         "wires": [
             [
-                "89eb8b134f58c2a3"
+                "89eb8b134f58c2a3",
+                "5e5c30e3707cadcf"
             ]
         ]
     },
@@ -286,12 +288,13 @@
         "format": "json",
         "syntax": "mustache",
         "template": "{\n    \"idTransport\": \"{{{flow.idTransport3}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
-        "output": "str",
+        "output": "json",
         "x": 1520,
         "y": 540,
         "wires": [
             [
-                "cd3e36a80ad109d9"
+                "cd3e36a80ad109d9",
+                "5e5c30e3707cadcf"
             ]
         ]
     },
@@ -377,12 +380,13 @@
         "format": "json",
         "syntax": "mustache",
         "template": "{\n    \"idTransport\": \"{{{flow.idTransport4}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
-        "output": "str",
+        "output": "json",
         "x": 1520,
         "y": 680,
         "wires": [
             [
-                "355a2011f73561c9"
+                "355a2011f73561c9",
+                "5e5c30e3707cadcf"
             ]
         ]
     },
@@ -468,12 +472,13 @@
         "format": "json",
         "syntax": "mustache",
         "template": "{\n    \"idTransport\": \"{{{flow.idTransport5}}}\",\n    \"seat\":{\n        \"row\": \"{{{flow.row}}}\",\n        \"column\": \"{{{flow.column}}}\", \n        \"state\": \"{{{flow.state}}}\"\n    }\n}",
-        "output": "str",
+        "output": "json",
         "x": 1520,
         "y": 820,
         "wires": [
             [
-                "0ef3a2c368e14e87"
+                "0ef3a2c368e14e87",
+                "5e5c30e3707cadcf"
             ]
         ]
     },
@@ -585,8 +590,8 @@
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
-        "randomFirst": "0.5",
-        "randomLast": "1",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
@@ -610,8 +615,8 @@
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
-        "randomFirst": "0.5",
-        "randomLast": "1",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
@@ -635,8 +640,8 @@
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
-        "randomFirst": "0.5",
-        "randomLast": "1",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
@@ -755,8 +760,8 @@
         "rate": "1",
         "nbRateUnits": "1",
         "rateUnits": "second",
-        "randomFirst": "0.5",
-        "randomLast": "1",
+        "randomFirst": "0.1",
+        "randomLast": "0.6",
         "randomUnits": "seconds",
         "drop": false,
         "allowrate": false,
@@ -857,6 +862,20 @@
         "broker": "960c3092a0e48a16",
         "x": 1690,
         "y": 820,
+        "wires": []
+    },
+    {
+        "id": "5e5c30e3707cadcf",
+        "type": "ubidots_out",
+        "z": "5b3a1541dfd208be",
+        "name": "",
+        "token": "BBFF-IsyJE7xZvhrcC8y2ZqFnEQSppDbSuw",
+        "label_device": "",
+        "device_label": "NowSeat",
+        "tier": "business",
+        "tls_checkbox": true,
+        "x": 2050,
+        "y": 540,
         "wires": []
     },
     {
