@@ -28,21 +28,33 @@
     "stopCode": "Cantore",
     "line": "66",
     "time": "12:15",
-    "totalSeats": "16",
+    "totalSeats": "24",
     "start": "Piazza Montano",
     "destination": "Dinegro",
-    "rows": "4",
+    "rows": "6",
     "columns": "4"
 },
 {
     "idTransport": "3",
-    "type": "train",
+    "type": "bus",
     "stopCode": "Cantore",
     "line": "365",
     "time": "12:15",
     "totalSeats": "16",
+    "start": "Piazza Montano",
+    "destination": "Via Fanti",
+    "rows": "4",
+    "columns": "4"
+},
+{
+    "idTransport": "4",
+    "type": "train",
+    "stopCode": "Cantore",
+    "line": "2407",
+    "time": "12:10",
+    "totalSeats": "120",
     "start": "Ventimiglia",
     "destination": "Genova Brignole",
-    "rows": "4",
+    "rows": "30",
     "columns": "4"
 }]
