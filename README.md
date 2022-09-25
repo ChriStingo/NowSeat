@@ -5,6 +5,8 @@ Often it happens to bring valuables, fragile or bulky objects with you and befor
 
 *This project aims to meet the needs of those who, taking public transport, need to know how many people are actually on the vehicle so that they can choose whether to get on or not thanks to this information.*
 
+We can summarize NowSeat in *"Real-time availability of seats on various public transport"*.
+
 
 **General Architecture**
 
