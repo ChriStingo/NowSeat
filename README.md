@@ -25,7 +25,7 @@ Often it happens to bring valuables, fragile or bulky objects with you and befor
 
 <img src="https://lh5.googleusercontent.com/ARZ49OP6Jpz-NHiLQXbWikotYOF0rgXL8gLsctZPyE3XURnKZWTplDQGKpADkOfUmuix9SUap2-d8mV9dCN-lRDTuMKw9icH157lkaD_P5PmhXOaMmVt3jw7JiUtAvdVNOSynnWWjg8s3LEyEdXKJzLD1uIgv7CP-aSzaxcBaJND4PxVFO892i2iYE1T=nw" width="650" height="500">
 
-*More info in "NowSeat Presentation"*
+*More info in "NowSeat Presentation.pdf"*
 
 
 ## Dependencies
