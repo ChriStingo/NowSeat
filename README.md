@@ -31,7 +31,7 @@ We can summarize NowSeat in *"Real-time availability of seats on various public 
 
 
 ## Dependencies
-0. Install node wih version > 16.16.0
+0. Install node wih version >= 16.16.0
 1. Inside NowSeat-Broker install aedes with `npm install aedes`
 2. Inside NowSeat-Arduino install node-red with `npm install node-red`
 3. Inside NowSeat-WebApp install packages with `npm install`
@@ -39,7 +39,7 @@ We can summarize NowSeat in *"Real-time availability of seats on various public 
 ## Execution
 1. Start server with `node NowSeat-Broker/server.js`
 2. Start node-red sensors with `node-red`  and check http://localhost:1880 to start the simulation
-3. Start the WebApp with `npm start` and check http://localhost:4200 to open the web app
+3. Start the WebApp by going to the folder NowSeat-WebApp, running `npm start` and check http://localhost:4200 to open the web app
 
 
 
